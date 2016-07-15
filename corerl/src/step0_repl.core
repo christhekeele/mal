@@ -1,0 +1,16 @@
+module 'step0_repl' [
+  'module_info'/0,
+	'module_info'/1,
+	'main'/1
+] attributes [ ]
+
+'main'/1 = fun (_args) ->
+  call 'io':'fwrite'(_args)
+
+'module_info'/0 = fun () ->
+	call 'erlang':'get_module_info'('mal')
+
+'module_info'/1 = fun (_attr) ->
+  call 'erlang':'get_module_info'('mal', _attr)
+
+end

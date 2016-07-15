@@ -1,0 +1,1 @@
+%{"mix_core_compiler": {:git, "https://github.com/christhekeele/mix_core_compiler.git", "543c56641f431a8025cb79624bb6a2918e31a62b", []}}

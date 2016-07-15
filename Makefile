@@ -77,8 +77,8 @@ DOCKERIZE =
 # Settings
 #
 
-IMPLS = ada awk bash c d clojure coffee cpp crystal cs erlang elisp \
-	elixir es6 factor forth fsharp go groovy guile haskell haxe \
+IMPLS = ada awk bash c d clojure coffee corerl cpp crystal cs erlang \
+	elisp elixir es6 factor forth fsharp go groovy guile haskell haxe \
 	io java julia js kotlin logo lua make mal ocaml matlab miniMAL \
 	nim objc objpascal perl perl6 php plpgsql plsql ps python r \
 	racket rpython ruby rust scala swift swift3 tcl vb vhdl vimscript
@@ -148,6 +148,7 @@ c_STEP_TO_PROG =       c/$($(1))
 d_STEP_TO_PROG =       d/$($(1))
 clojure_STEP_TO_PROG = clojure/target/$($(1)).jar
 coffee_STEP_TO_PROG =  coffee/$($(1)).coffee
+corerl_STEP_TO_PROG =  corerl/bin/$($(1))
 cpp_STEP_TO_PROG =     cpp/$($(1))
 crystal_STEP_TO_PROG = crystal/$($(1))
 cs_STEP_TO_PROG =      cs/$($(1)).exe
