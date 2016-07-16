@@ -4,8 +4,36 @@ module 'step0_repl' [
 	'main'/1
 ] attributes [ ]
 
-'main'/1 = fun (_args) ->
-  call 'io':'fwrite'(_args)
+'main'/1 = fun (_args) -> do
+  call 'io':'setopts'( 'standard_io', [
+    {'binary', 'true'},
+    {'encoding', 'unicode'}
+  ])
+  apply 'prompt'/1('user> ')
+
+'prompt'/1 = fun(_prompt) ->
+  case call 'io':'get_line'('standard_io', _prompt) of
+  'eof' when 'true' ->
+    'done'
+  _line when 'true' -> do
+    let _result = apply 'rep'/1(_line) in
+      call 'io':'fwrite'('standard_io', '~s', [_result])
+    apply 'prompt'/1(_prompt)
+  end
+
+'rep'/1 = fun(_line) ->
+  let _data = apply 'READ'/1(_line) in
+    let _output = apply 'EVAL'/1(_data) in
+      apply 'PRINT'/1(_output)
+
+'READ'/1 = fun(_input) ->
+  _input
+
+'EVAL'/1 = fun(_data) ->
+  _data
+
+'PRINT'/1 = fun(_output) ->
+  _output
 
 'module_info'/0 = fun () ->
 	call 'erlang':'get_module_info'('mal')
